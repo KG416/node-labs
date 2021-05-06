@@ -3,6 +3,9 @@
     margin: 0;
     text-decoration: none;
     list-style: none;
+
+    color: rgb(255, 241, 161);
+    background-color: rgb(0, 7, 33);
 }
 
 h1 {
