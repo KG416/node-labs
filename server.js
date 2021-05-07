@@ -7,7 +7,7 @@ const fs = require("fs");
 const app = express();
 
 // Putting the localhost port in a variable
-const PORT = 5000;
+const PORT = 3000;
 
 // To be able to serve static files 
 app.use(express.static('public'));
@@ -68,36 +68,78 @@ app.get("/api/dice_num/:num", (req, res) => {
 
 
 // LAB 2 ====================================================================
-var stateNumber;
 
-app.get("/api/db", (req, res) => {
+// counter ==============================================================
+app.get("/api/counter", (req, res) => {
 
-    // Check what data is inside the db textfile
-    fs.readFile('./db/db.txt', (err, data) => {
-        // Check for err and log if there is one
+    // Check what data is inside the counter textfile
+    fs.readFile('./db/counter.txt', (err, data) => {
+        // Check for errors
         if (err) {
             console.log(err);
         }
-        stateNumber = Number(data);
-        console.log(stateNumber);
+
+        // Make content of counter.txt into a string
+        let countNum = data.toString();
+
+        // send back counters current state as the respons in a json object
+        res.json({ counter: countNum });
     });
 });
+// ===============================================================================
 
+
+// counter + 1 ==============================================================
 app.get("/api/plus", (req, res) => {
 
-    // Check what data is inside the db textfile
-    fs.readFile('./db/db.txt', (err, data) => {
-        // Check for err and log if there is one
+    // Check what data is inside the counter text file (our current counter state)
+    fs.readFile('./db/counter.txt', (err, data) => {
+
+        // Check for errors
         if (err) {
             console.log(err);
         }
-        stateNumber = Number(data);
-        console.log(stateNumber);
 
-        // Add 1 to stateNumber (didn't work with writeFile..)
+        // 1. Make content of counter.txt into a number and add 1
+        // 2. Make it a string & put it in a new variable
+        countNumPlus1Str = (Number(data) + 1).toString();
+        console.log(`countNum is now ${countNumPlus1Str}`);
+
+        // Update the state of counter by adding 1 to it
+        fs.writeFile('./db/counter.txt', countNumPlus1Str, () => {
+            // send back countNum as the respons in a json object
+            res.json({ counter: countNumPlus1Str });
+
+        });
     });
-
 });
+// ===============================================================================
+
+// counter - 1 ==============================================================
+app.get("/api/minus", (req, res) => {
+
+    // Check what data is inside the counter text file (our current counter state)
+    fs.readFile('./db/counter.txt', (err, data) => {
+
+        // Check for errors
+        if (err) {
+            console.log(err);
+        }
+
+        // 1. Make content of counter.txt into a number and add 1
+        // 2. Make it a string & put it in a new variable
+        countNumMinus1Str = (Number(data) - 1).toString();
+        console.log(`countNum is now ${countNumMinus1Str}`);
+
+        // Update the state of counter by adding 1 to it
+        fs.writeFile('./db/counter.txt', countNumMinus1Str, () => {
+            // send back countNum as the respons in a json object
+            res.json({ counter: countNumMinus1Str });
+
+        });
+    });
+});
+// ===============================================================================
 
 // Listening to our web server
 app.listen(PORT, () => console.log(`server is listening to ${PORT}`));
