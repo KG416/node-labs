@@ -1,18 +1,23 @@
-// Imports 
-const { Router } = require('express');
-const express = require('express');
-const fs = require("fs");
+// ======================== Imports ===========================
 
-// The variable app runs the express function
+// Express, to be able to write simpler & cleaner node code
+const express = require('express');
 const app = express();
+
+// File System, to be able to read and write files
+const fs = require("fs");
 
 // Putting the localhost port in a variable
 const PORT = 3000;
 
 // To be able to serve static files 
 app.use(express.static('public'));
+// =============================================================
 
-// Random number function =====================================
+
+// =========================== LAB 1 ===========================
+
+// ================ Random number function =====================
 app.get("/api/random", (req, res) => {
     // Math
     const random = Math.floor(Math.random() * 1023);
@@ -21,7 +26,7 @@ app.get("/api/random", (req, res) => {
 });
 // =============================================================
 
-// custom_random function ======================================
+// =============== custom_random function ======================
 // I end with :num, that way I'll have access to whatever num is 
 // as req.params.num
 app.get("/api/custom_random/:num", (req, res) => {
@@ -40,7 +45,7 @@ app.get("/api/custom_random/:num", (req, res) => {
 })
 // ====================================================================
 
-// End ponint nr 3 ====================================================
+// ================= Dice & Number function ===========================
 app.get("/api/dice_num/:num", (req, res) => {
     // Roll dice function
     const rollDice = () => {
@@ -67,9 +72,9 @@ app.get("/api/dice_num/:num", (req, res) => {
 
 
 
-// LAB 2 ====================================================================
+// =========================== LAB 2 ====================================
 
-// counter ==============================================================
+// =========================== Counter ===========================
 app.get("/api/counter", (req, res) => {
 
     // Check what data is inside the counter textfile
@@ -89,7 +94,7 @@ app.get("/api/counter", (req, res) => {
 // ===============================================================================
 
 
-// counter + 1 ==============================================================
+// =========================== Counter +1 ===========================
 app.get("/api/plus", (req, res) => {
 
     // Check what data is inside the counter text file (our current counter state)
@@ -115,7 +120,7 @@ app.get("/api/plus", (req, res) => {
 });
 // ===============================================================================
 
-// counter - 1 ==============================================================
+// =========================== Counter -1 ===========================
 app.get("/api/minus", (req, res) => {
 
     // Check what data is inside the counter text file (our current counter state)
