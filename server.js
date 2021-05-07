@@ -31,8 +31,8 @@ app.get("/api/random", (req, res) => {
 // as req.params.num
 app.get("/api/custom_random/:num", (req, res) => {
 
-    // Remove the : and put the number in a variable called num
-    let num = req.params.num.substring(1);
+    // Pput the number in a variable called num
+    let num = req.params.num;
 
     // Math
     const customRandom = Math.floor(Math.random() * num);
@@ -110,11 +110,10 @@ app.get("/api/plus", (req, res) => {
         countNumPlus1Str = (Number(data) + 1).toString();
         console.log(`countNum is now ${countNumPlus1Str}`);
 
-        // Update the state of counter by adding 1 to it
+        // Update the state of counter
         fs.writeFile('./db/counter.txt', countNumPlus1Str, () => {
-            // send back countNum as the respons in a json object
+            // send back the updated counter state as respons in a json object
             res.json({ counter: countNumPlus1Str });
-
         });
     });
 });
@@ -131,14 +130,14 @@ app.get("/api/minus", (req, res) => {
             console.log(err);
         }
 
-        // 1. Make content of counter.txt into a number and add 1
+        // 1. Make content of counter.txt into a number and subtract 1
         // 2. Make it a string & put it in a new variable
         countNumMinus1Str = (Number(data) - 1).toString();
         console.log(`countNum is now ${countNumMinus1Str}`);
 
-        // Update the state of counter by adding 1 to it
+        // Update the state of counter
         fs.writeFile('./db/counter.txt', countNumMinus1Str, () => {
-            // send back countNum as the respons in a json object
+            // send back the updated counter state as respons in a json object
             res.json({ counter: countNumMinus1Str });
 
         });
