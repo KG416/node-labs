@@ -39,5 +39,24 @@ app.get("/api/custom_random/:num", (req, res) => {
 })
 // ====================================================================
 
+// End ponint nr 3 ====================================================
+app.get("/api/dice_num/:num", (req, res) => {
+    // Roll dice function
+    const rollDice = () => {
+        return 1 + Math.floor(Math.random() * 6)
+    }
+    // Putting things in neat variables
+    const dice = Number(rollDice());
+    const num = Number(req.params.num);
+
+    // Responding results in a json object
+    res.json({
+        dice: `You rolled ${dice}`,
+        number: `Your number is ${num}`,
+        total: `Dice + Number is ${num + dice}`
+    });
+});
+// ====================================================================
+
 // Listening to our web server
 app.listen(PORT, () => console.log(`server is listening to ${PORT}`));
