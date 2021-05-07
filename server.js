@@ -1,6 +1,7 @@
-// Importing express 
+// Imports 
 const { Router } = require('express');
 const express = require('express');
+const fs = require("fs");
 
 // The variable app runs the express function
 const app = express();
@@ -57,6 +58,46 @@ app.get("/api/dice_num/:num", (req, res) => {
     });
 });
 // ====================================================================
+
+
+
+
+
+
+
+
+
+// LAB 2 ====================================================================
+var stateNumber;
+
+app.get("/api/db", (req, res) => {
+
+    // Check what data is inside the db textfile
+    fs.readFile('./db/db.txt', (err, data) => {
+        // Check for err and log if there is one
+        if (err) {
+            console.log(err);
+        }
+        stateNumber = Number(data);
+        console.log(stateNumber);
+    });
+});
+
+app.get("/api/plus", (req, res) => {
+
+    // Check what data is inside the db textfile
+    fs.readFile('./db/db.txt', (err, data) => {
+        // Check for err and log if there is one
+        if (err) {
+            console.log(err);
+        }
+        stateNumber = Number(data);
+        console.log(stateNumber);
+
+        // Add 1 to stateNumber (didn't work with writeFile..)
+    });
+
+});
 
 // Listening to our web server
 app.listen(PORT, () => console.log(`server is listening to ${PORT}`));
