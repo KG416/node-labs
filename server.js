@@ -24,12 +24,12 @@ app.get("/api/random", (req, res) => {
 // =============================================================
 
 // =============== custom_random function ======================
-// I end with :num, that way I'll have access to whatever num is 
-// as req.params.num
+
+// I end with :num, that way I'll have access to whatever num is as req.params.num
 app.get("/api/custom_random/:num", (req, res) => {
 
-    // Remove the : and put the number in a variable called num
-    let num = req.params.num.substring(1);
+    // Put the number in a variable called num
+    let num = req.params.num;
 
     // Math
     const customRandom = Math.floor(Math.random() * num);
