@@ -27,11 +27,11 @@ app.get("/api/random", (req, res) => {
 // =============================================================
 
 // =============== custom_random function ======================
-// I end with :num, that way I'll have access to whatever num is 
-// as req.params.num
+// I end with :num to make num a "route parameter". That way I'll have 
+// access to whatever num is as req.params.num
 app.get("/api/custom_random/:num", (req, res) => {
 
-    // Pput the number in a variable called num
+    // Put the number in a variable called num
     let num = req.params.num;
 
     // Math
