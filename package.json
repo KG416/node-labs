@@ -4,11 +4,18 @@
   "description": "kyh FE20 node labs",
   "main": "server.js",
   "scripts": {
+    "test": "mocha test",
+    "coverage": "nyc --reporter=html npm run test",
     "start": "nodemon server.js"
   },
   "author": "Karlo",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0"
   }
 }

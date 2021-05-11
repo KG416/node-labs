@@ -1,0 +1,1 @@
+{"processes":{"243b6705-2743-49a6-bc48-3eb307cdb506":{"parent":null,"children":["3a23feab-4363-494b-9264-f2456f79ce2e"]},"3a23feab-4363-494b-9264-f2456f79ce2e":{"parent":"243b6705-2743-49a6-bc48-3eb307cdb506","children":[]}},"files":{"/Users/FredrikAsplov/kod/backend/node-labs/app.js":["3a23feab-4363-494b-9264-f2456f79ce2e"]},"externalIds":{}}

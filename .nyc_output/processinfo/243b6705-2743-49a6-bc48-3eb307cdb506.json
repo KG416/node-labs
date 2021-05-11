@@ -1,0 +1,1 @@
+{"parent":null,"pid":10047,"argv":["/usr/local/bin/node","/usr/local/bin/npm","run","test"],"execArgv":[],"cwd":"/Users/FredrikAsplov/kod/backend/node-labs","time":1620765702026,"ppid":10046,"coverageFilename":"/Users/FredrikAsplov/kod/backend/node-labs/.nyc_output/243b6705-2743-49a6-bc48-3eb307cdb506.json","externalId":"","uuid":"243b6705-2743-49a6-bc48-3eb307cdb506","files":[]}
