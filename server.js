@@ -18,12 +18,16 @@ app.use(express.static('public'));
 // =========================== LAB 1 ===========================
 
 // ================ Random number function =====================
-app.get("/api/random", (req, res) => {
-    // Math
-    const random = Math.floor(Math.random() * 1023);
-    // send back random as the respons in a json object
-    res.json({ number: random });
-});
+const randomNumFunc = () => {
+    app.get("/api/random", (req, res) => {
+        // Math
+        const random = Math.floor(Math.random() * 1023);
+        // send back random as the respons in a json object
+        res.json({ number: random });
+    });
+};
+
+randomNumFunc();
 // =============================================================
 
 // =============== custom_random function ======================
@@ -144,6 +148,10 @@ app.get("/api/minus", (req, res) => {
     });
 });
 // ===============================================================================
+
+module.exports = {
+    randomNumFunc
+};
 
 // Listening to our web server
 app.listen(PORT, () => console.log(`server is listening to ${PORT}`));
