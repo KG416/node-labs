@@ -18,16 +18,14 @@ app.use(express.static('public'));
 // =========================== LAB 1 ===========================
 
 // ================ Random number function =====================
-const randomNumFunc = () => {
-    app.get("/api/random", (req, res) => {
-        // Math
-        const random = Math.floor(Math.random() * 1023);
-        // send back random as the respons in a json object
-        res.json({ number: random });
-    });
-};
 
-randomNumFunc();
+app.get("/api/random", (req, res) => {
+    // Math
+    const random = Math.floor(Math.random() * 1023);
+    // send back random as the respons in a json object
+    res.json({ number: random });
+});
+
 // =============================================================
 
 // =============== custom_random function ======================
@@ -88,11 +86,10 @@ app.get("/api/counter", (req, res) => {
             console.log(err);
         }
 
-        // Make content of counter.txt into a string
-        let countNum = data.toString();
+        const countNum = Number(data);
 
         // send back counters current state as the respons in a json object
-        res.json({ counter: countNum });
+        res.json({ status: 'success', counter: countNum });
     });
 });
 // ===============================================================================
@@ -109,15 +106,18 @@ app.get("/api/plus", (req, res) => {
             console.log(err);
         }
 
+        // Check current value of counter
+        const countBeforeAdd = Number(data);
+
         // 1. Make content of counter.txt into a number and add 1
-        // 2. Make it a string & put it in a new variable
+        // 2. Make it to a string again to be able to update counter.txt (only accepts strings)
         countNumPlus1Str = (Number(data) + 1).toString();
-        console.log(`countNum is now ${countNumPlus1Str}`);
+        console.log(`counter + 1 is ${countNumPlus1Str}`);
 
         // Update the state of counter
         fs.writeFile('./db/counter.txt', countNumPlus1Str, () => {
             // send back the updated counter state as respons in a json object
-            res.json({ counter: countNumPlus1Str });
+            res.json({ status: 'success', countBeforeAdd: countBeforeAdd, counter: Number(countNumPlus1Str) });
         });
     });
 });
@@ -134,24 +134,25 @@ app.get("/api/minus", (req, res) => {
             console.log(err);
         }
 
+        // Check current value of counter
+        const countBeforeAdd = Number(data);
+
         // 1. Make content of counter.txt into a number and subtract 1
-        // 2. Make it a string & put it in a new variable
+        // 2. Make it to a string again to be able to update counter.txt (only accepts strings)
         countNumMinus1Str = (Number(data) - 1).toString();
-        console.log(`countNum is now ${countNumMinus1Str}`);
+        console.log(`counter - 1 is ${countNumMinus1Str}`);
 
         // Update the state of counter
         fs.writeFile('./db/counter.txt', countNumMinus1Str, () => {
             // send back the updated counter state as respons in a json object
-            res.json({ counter: countNumMinus1Str });
+            res.json({ status: 'success', countBeforeAdd: countBeforeAdd, counter: Number(countNumMinus1Str) });
 
         });
     });
 });
 // ===============================================================================
 
-module.exports = {
-    randomNumFunc
-};
+module.exports = app;
 
 // Listening to our web server
 app.listen(PORT, () => console.log(`server is listening to ${PORT}`));

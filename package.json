@@ -4,7 +4,7 @@
   "description": "kyh FE20 node labs",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha",
     "coverage": "nyc --reporter=html npm run test",
     "start": "nodemon server.js"
   },
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "mocha": "^8.4.0",
     "nyc": "^15.1.0"
   }
