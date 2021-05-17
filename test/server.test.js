@@ -7,13 +7,13 @@ chai.use(chaiHttp);
 
 // random
 describe("/api/random", () => {
-    it("Should return a number", done => {
+    it("Should return a number below 1023", done => {
         chai
             .request(app)
             .get("/api/random")
             .end((err, res) => {
                 expect(res).to.have.status(200);
-                expect(res.body.number).to.be.a('number');
+                expect(res.body.number < 1023);
                 done();
             });
     });
