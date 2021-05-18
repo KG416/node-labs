@@ -55,6 +55,7 @@ describe("/api/plus", () => {
             .request(app)
             .get("/api/plus")
             .end((err, res) => {
+                expect(res).to.have.status(200);
                 expect(res.body.status).to.equals("success");
                 expect(res.body.counter).to.equals(res.body.countBeforeAdd + 1);
                 done();
@@ -83,6 +84,7 @@ describe("/api/minus", () => {
             .request(app)
             .get("/api/minus")
             .end((err, res) => {
+                expect(res).to.have.status(200);
                 expect(res.body.status).to.equals("success");
                 expect(res.body.counter).to.equals(res.body.countBeforeAdd - 1);
                 done();
