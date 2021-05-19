@@ -8,8 +8,6 @@ kyh FE20 school assignment
 - Chai
 - Nyc
 
-## Run tests
-`npm test`
-
-## Start server at port 3000
-`npm start`
+## Run server & tests
+Tets = `npm test`
+Server = `npm start`
