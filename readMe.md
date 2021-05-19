@@ -7,3 +7,9 @@ kyh FE20 school assignment
 - Mocha
 - Chai
 - Nyc
+
+## Run tests
+`npm test`
+
+## Start server at port 3000
+`npm start`

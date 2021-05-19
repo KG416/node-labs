@@ -112,7 +112,7 @@ app.get("/api/plus", (req, res) => {
         // 1. Make content of counter.txt into a number and add 1
         // 2. Make it to a string again to be able to update counter.txt (only accepts strings)
         countNumPlus1Str = (Number(data) + 1).toString();
-        console.log(`counter + 1 is ${countNumPlus1Str}`);
+        //console.log(`counter + 1 is ${countNumPlus1Str}`);
 
         // Update the state of counter
         fs.writeFile('./db/counter.txt', countNumPlus1Str, () => {
@@ -140,7 +140,7 @@ app.get("/api/minus", (req, res) => {
         // 1. Make content of counter.txt into a number and subtract 1
         // 2. Make it to a string again to be able to update counter.txt (only accepts strings)
         countNumMinus1Str = (Number(data) - 1).toString();
-        console.log(`counter - 1 is ${countNumMinus1Str}`);
+        //console.log(`counter - 1 is ${countNumMinus1Str}`);
 
         // Update the state of counter
         fs.writeFile('./db/counter.txt', countNumMinus1Str, () => {
