@@ -13,7 +13,7 @@ describe("/api/random", () => {
             .get("/api/random")
             .end((err, res) => {
                 expect(res).to.have.status(200);
-                expect(res.body.number < 1023 && res.body.number > 0);
+                expect(res.body.number).to.be.within(0, 1023)
                 done();
             });
     });
