@@ -9,5 +9,5 @@ kyh FE20 school assignment
 - Nyc
 
 ## Run server & tests
-Tets = `npm test`
-Server = `npm start`
+- Tets = `npm test`
+- Server = `npm start`
